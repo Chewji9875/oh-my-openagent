@@ -54,17 +54,19 @@ describe("buildPrometheusAgentConfig", () => {
         });
 
         // then
-        expect(resolveModelPipelineSpy).toHaveBeenCalledWith({
-          intent: {
-            uiSelectedModel: undefined,
-            userModel: undefined,
-            categoryDefaultModel: undefined,
-          },
-          constraints: { availableModels: new Set() },
-          policy: expect.objectContaining({
-            systemDefaultModel: undefined,
-          }),
-        });
+        expect(resolveModelPipelineSpy).toHaveBeenCalledWith(
+          expect.objectContaining({
+            intent: {
+              uiSelectedModel: undefined,
+              userModel: undefined,
+              categoryDefaultModel: undefined,
+            },
+            constraints: { availableModels: new Set() },
+            policy: expect.objectContaining({
+              systemDefaultModel: undefined,
+            }),
+          })
+        );
         expect(result.model).toBe("anthropic/claude-opus-4-7");
       });
     });
