@@ -51,6 +51,7 @@ export function applyToolConfig(params: {
 
   params.config.tools = {
     ...(params.config.tools as Record<string, unknown>),
+    "github_*": false,
     "grep_app_*": false,
     LspHover: false,
     LspCodeActions: false,
